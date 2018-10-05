@@ -1,0 +1,35 @@
+spring:
+    profiles:
+      active: dev
+    datasource:
+        url: jdbc:mysql://localhost:3306/quartzservice?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        username: wks
+        password: wkswks
+    jpa:
+        database: MYSQL
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+            naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+    quartz:
+        jdbc:
+            initialize-schema: ALWAYS
+            comment-prefix: \#
+        job-store-type: jdbc
+
+
+---
+spring:
+    profiles: dev
+server:
+    port: 8085
+
+---
+spring:
+    profiles: prod
+
+server:
+    port: 8080
